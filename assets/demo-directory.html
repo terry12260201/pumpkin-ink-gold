@@ -11,7 +11,7 @@
 <style>
 /* ink-gold kit:start */
 /* ==========================================================================
-   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.0
+   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.1
    用法：整段貼進 <style>，<body class="ig"> 就生效。
    中文頁面請寫 <html lang="zh-Hant">（標題字距會自動改成中文友善）。
    ========================================================================== */
@@ -47,7 +47,7 @@
   --ig-gold: #FDC302;
   --ig-gold-light: #FFD83A;
   --ig-gold-soft: #FCD94A;   /* 焦點光圈、深底上的 hover 字 */
-  --ig-gold-deep: #B88800;   /* 淺底上的金色文字 */
+  --ig-gold-deep: #8A6400;   /* 淺底上的金色文字 */
   --ig-gold-wash: #FEF3C7;
   --ig-on-gold: #2D2B2C;     /* 金色上面的字：深炭，不是純黑 */
   --ig-gold-gradient: linear-gradient(to top, #FDC302 0%, #FFD83A 100%);
@@ -377,6 +377,36 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   .ig-nav { margin: 12px 12px 0; }
   .ig-tool__logo { width: 56px; height: 56px; flex-basis: 56px; }
 }
+
+/* 1.1 · Directory profile — exact content width, quieter hierarchy */
+:root{--ig-w-directory:1200px;--ig-grid-gap:12px;--ig-logo-size:76px;--ig-label-readable:rgba(22,20,21,.64);--ig-focus-ink:rgba(22,20,21,.8);--ig-dot-quiet:rgba(22,20,21,.055)}
+html:has(body.ig),body.ig{overflow-x:clip}
+body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,transparent 1px)}
+.ig-directory .ig-container{max-width:1248px;padding:0 24px}
+.ig-directory .ig-nav{width:calc(100% - 48px);max-width:var(--ig-w-directory);top:24px;margin:24px auto 0}
+.ig-directory .ig-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ig-grid-gap)}
+.ig-directory .ig-tool__logo{width:var(--ig-logo-size);height:var(--ig-logo-size);flex-basis:var(--ig-logo-size)}
+.ig-directory .ig-tool__logo svg{width:40px;height:40px}
+.ig-directory .ig-tool__title{display:block;padding-right:12px;line-height:1.5}
+.ig-directory .ig-tool__desc{line-height:1.6;min-height:3.2em}
+.ig-directory .ig-tool__foot{margin-top:10px}
+.ig-directory .ig-tool__foot .ig-tag{padding:0;background:transparent;font-size:12px;color:var(--ig-label-readable)}
+.ig-directory .ig-card--link:hover{transform:translateY(-1px)}
+.ig-directory .ig-pill__n{color:var(--ig-label-readable)}
+.ig-directory .ig-pill.is-active .ig-pill__n{color:var(--ig-on-night-muted)}
+.ig-directory .ig-tool__arrow{opacity:0}
+.ig-directory .ig-tool:hover .ig-tool__arrow,.ig-directory .ig-tool:focus-visible .ig-tool__arrow{opacity:1}
+.ig-directory .ig-tool__logo[data-tone="文件"]{color:var(--ig-chart-3)}
+.ig-directory .ig-tool__logo[data-tone="設計"]{color:var(--ig-chart-4)}
+.ig-directory .ig-tool__logo[data-tone="影像"]{color:var(--ig-chart-5)}
+.ig-directory .ig-tool__logo[data-tone="自動化"]{color:var(--ig-chart-2)}
+.ig-directory .ig-tool__logo[data-tone="生活"]{color:var(--ig-gold-deep)}
+.ig-directory :focus-visible{outline:2px solid var(--ig-focus-ink);outline-offset:3px;box-shadow:var(--ig-focus)}
+.ig[data-theme="night"]{--ig-label-readable:rgba(247,247,247,.65);--ig-focus-ink:rgba(255,255,255,.8)}
+@media(max-width:1023px){.ig-directory .ig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ig-directory .ig-grid{grid-template-columns:minmax(0,1fr)}.ig-directory .ig-container{padding:0 16px}.ig-directory .ig-nav{width:calc(100% - 24px);top:12px;margin-top:12px}.ig-directory .ig-tool__logo{width:64px;height:64px;flex-basis:64px}}
+@media(prefers-reduced-motion:reduce){.ig-card--link:hover,.ig-btn:hover,.ig-tool__arrow{transform:none!important}}
+
 /* ink-gold kit:end */
 
 /* ── 本頁專用 ── */
@@ -410,9 +440,13 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
 
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
 @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+
+.directory-intro{text-align:center;padding:54px 0 56px}.directory-intro h1{font-size:40px;font-weight:650;line-height:1.3;overflow-wrap:anywhere}.directory-intro h1 span{font-weight:450}.directory-intro>p{font-size:16px;color:var(--ig-ink-muted);margin:14px auto 28px}.intro-actions{display:flex;justify-content:center;gap:24px}.intro-actions a{display:flex;text-align:left;align-items:center;gap:12px;padding:10px 22px;border:1px solid var(--ig-ink-hairline);background:var(--ig-card);border-radius:999px;box-shadow:var(--ig-shadow-xs)}.intro-actions svg{width:24px;height:24px;color:var(--ig-gold-deep)}.intro-actions b{display:block;font-size:14px;font-weight:600}.intro-actions small{display:block;font-size:12px;color:var(--ig-ink-muted)}#tools{padding:0!important}.directory-heading{font-size:22px;font-weight:700}.dir-head{margin-bottom:24px}.dir-tools{display:flex;flex-direction:column;gap:20px}.dir-tools .ig-search{height:40px;max-width:100%!important}.dir-tools .ig-search input{font-size:14px}.ig-tool{min-height:140px}.demo-note{font-size:13px;color:var(--ig-ink-muted);margin:32px 0 0!important}.directory-footer{max-width:1200px;margin:48px auto 0;padding:28px 0;display:flex;gap:24px;border-top:1px solid var(--ig-ink-hairline);font-size:13px;color:var(--ig-ink-muted)}.directory-footer span{margin-right:auto}.directory-footer a{white-space:nowrap}dialog{background:var(--ig-card);color:var(--ig-ink);border:1px solid var(--ig-ink-hairline);border-radius:18px;padding:32px;max-width:520px;width:calc(100% - 32px);box-shadow:var(--ig-shadow-stage)}dialog::backdrop{background:var(--ig-ink-faint)}dialog h2{font-size:26px;margin:16px 0}dialog p{margin:12px 0!important}dialog .ig-btn{margin-top:12px}#close-detail{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:24px;cursor:pointer;color:var(--ig-ink)}
+@media(max-width:640px){.directory-intro{padding:38px 0}.directory-intro h1{font-size:30px}.intro-actions{flex-direction:column;align-items:center;gap:10px}.intro-actions a{width:260px}.directory-footer{margin:32px 16px 0;flex-wrap:wrap;gap:16px}.directory-footer span{flex-basis:100%}.ig-tool{gap:14px}.ig-tool__title{font-size:16px}.dir-head{align-items:flex-start;flex-direction:column;gap:8px}}
+
 </style>
 </head>
-<body class="ig">
+<body class="ig ig-directory">
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs><linearGradient id="gold" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FDC302"/><stop offset="1" stop-color="#FFD83A"/></linearGradient></defs>
@@ -445,149 +479,42 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   </a>
   <div class="ig-nav__links">
     <a class="ig-nav__link is-active" href="#tools">工具</a>
-    <a class="ig-nav__link" href="#how">用法</a>
-    <a class="ig-nav__link" href="#faq">常見問題</a>
+
+
     <a class="ig-nav__link" href="../index.html">設計總覽</a>
   </div>
   <div class="ig-nav__right">
-    <a class="ig-btn ig-btn--gold ig-btn--sm" href="#join">免費加入</a>
+    <a class="ig-btn ig-btn--gold ig-btn--sm" href="https://github.com/terry12260201/pumpkin-ink-gold">取得設計套件</a>
   </div>
 </nav>
 
 <main class="ig-container ig-container--wide">
-  <!-- Hero -->
-  <section class="hero">
-    <div>
-      <span class="ig-kicker"><span class="ig-live"></span>範例頁面 · 內容皆為示意</span>
-      <h1 class="ig-display">
-        <span class="ig-display__strong">每天用得到的</span>
-        <span class="ig-display__light"><em style="font-style:italic;font-weight:900">AI</em> 工具，都在這</span>
-      </h1>
-      <p class="ig-lead">挑好、試過、分類整理。找工具不用再翻十個分頁——<span class="ig-mark">打一個字就找得到</span>。</p>
-      <div class="hero__cta">
-        <a class="ig-btn ig-btn--gold ig-btn--lg" href="#tools">開始探索 <svg><use href="#i-right"/></svg></a>
-        <a class="ig-btn ig-btn--ink ig-btn--lg" href="#how">看怎麼用</a>
-      </div>
-    </div>
-
-    <div class="hub" aria-hidden="true">
-      <svg class="lines" viewBox="0 0 100 91" preserveAspectRatio="none">
-        <defs><linearGradient id="ln" x1="0" x2="1"><stop offset="0" stop-color="#FDC302" stop-opacity="0"/><stop offset=".5" stop-color="#FDC302" stop-opacity=".7"/><stop offset="1" stop-color="#FDC302" stop-opacity="0"/></linearGradient></defs>
-        <g stroke="url(#ln)" stroke-width=".35" fill="none">
-          <path d="M50 45.5 18 18"/><path d="M50 45.5 84 16"/><path d="M50 45.5 12 58"/><path d="M50 45.5 90 55"/><path d="M50 45.5 30 84"/><path d="M50 45.5 74 82"/>
-        </g>
-      </svg>
-      <div class="hub__core"><svg viewBox="0 0 32 32"><path d="M10 6h12v20l-6-4.4-6 4.4z" fill="url(#gold)"/></svg></div>
-      <div class="float float--gold" style="left:10%;top:12%;rotate:-10deg;animation-delay:-1s"><svg><use href="#i-spark"/></svg></div>
-      <div class="float float--blue" style="right:8%;top:8%;rotate:8deg;animation-delay:-3s"><svg><use href="#i-image"/></svg></div>
-      <div class="float" style="left:2%;top:52%;rotate:6deg;animation-delay:-2s"><svg><use href="#i-mic"/></svg></div>
-      <div class="float float--ink" style="right:2%;top:50%;rotate:-7deg;animation-delay:-4s"><svg><use href="#i-cube"/></svg></div>
-      <div class="float float--pink" style="left:22%;bottom:2%;rotate:-5deg;animation-delay:-5s"><svg><use href="#i-play"/></svg></div>
-      <div class="float" style="right:18%;bottom:4%;rotate:10deg;animation-delay:-2.5s"><svg><use href="#i-zap"/></svg></div>
-    </div>
+  <section class="directory-intro">
+    <h1>每天用得到的 <span>AI 工具</span></h1>
+    <p>找對工具，把時間留給真正想做的事。</p>
+    <div class="intro-actions"><a href="../index.html"><svg><use href="#i-grid"/></svg><span><b>認識墨金美學</b><small>看看顏色、字體與元件</small></span></a><a href="../references/AI咒語.md"><svg><use href="#i-spark"/></svg><span><b>帶走這個風格</b><small>把規格交給你的 AI 助手</small></span></a></div>
   </section>
-
-  <!-- 數據列 -->
-  <section class="stats">
-    <div class="ig-card ig-stat"><svg><use href="#i-spark"/></svg><div><div class="ig-stat__n">12</div><div class="ig-stat__l">精選工具</div></div></div>
-    <div class="ig-card ig-stat"><svg><use href="#i-box"/></svg><div><div class="ig-stat__n">6</div><div class="ig-stat__l">分類</div></div></div>
-    <div class="ig-card ig-stat"><svg><use href="#i-grid"/></svg><div><div class="ig-stat__n">3 步</div><div class="ig-stat__l">找到要用的</div></div></div>
-    <div class="ig-card ig-stat"><svg><use href="#i-bell"/></svg><div><div class="ig-stat__n">每週</div><div class="ig-stat__l">更新一次</div></div></div>
-  </section>
-
   <!-- 工具目錄 -->
   <section class="ig-section" id="tools" style="padding-bottom:40px">
     <div class="dir-head">
       <div>
-        <span class="ig-eyebrow">Directory · 工具目錄</span>
-        <h2 class="ig-h2" style="margin-top:8px">瀏覽工具</h2>
+
+        <h2 class="directory-heading">瀏覽工具</h2>
       </div>
       <span class="ig-meta" id="count"></span>
     </div>
     <div class="dir-tools">
-      <label class="ig-search" style="max-width:560px"><svg><use href="#i-search"/></svg><input id="q" placeholder="搜尋工具名稱或用途，例如「會議」"><span class="ig-kbd">/</span></label>
+      <label class="ig-search" style="max-width:560px"><svg><use href="#i-search"/></svg><input id="q" aria-label="搜尋工具" placeholder="搜尋工具名稱或用途，例如「會議」"><span class="ig-kbd">/</span></label>
       <div class="ig-pills" id="pills"></div>
     </div>
     <div class="ig-grid" id="grid"></div>
     <p class="empty" id="empty">找不到符合的工具，換個關鍵字試試。</p>
   </section>
 
-  <!-- 便當格 -->
-  <section class="ig-section" id="how" style="padding-top:40px">
-    <div class="ig-center" style="margin-bottom:36px">
-      <span class="ig-kicker">怎麼用</span>
-      <h2 class="ig-h2" style="margin:14px 0 10px">三種方式，挑一種就好</h2>
-      <p class="ig-lead">不用全部學會。先挑最常用的那一個，其他用到再說。</p>
-    </div>
-    <div class="ig-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
-      <article class="ig-card ig-tile ig-tile--dark">
-        <div class="ig-tile__art"><div class="float float--gold" style="position:static;animation:none;rotate:-6deg"><svg><use href="#i-box"/></svg></div></div>
-        <div class="ig-tile__body"><h3 class="ig-h3">整包帶走</h3><p class="ig-small">所有工具一次收進書籤，隨時打開就用。</p></div>
-      </article>
-      <article class="ig-card ig-tile">
-        <div class="ig-tile__art"><div class="float" style="position:static;animation:none;rotate:5deg"><svg><use href="#i-search"/></svg></div></div>
-        <div class="ig-tile__body"><h3 class="ig-h3">用搜尋找</h3><p class="ig-small">知道要做什麼，就直接打字搜尋。</p></div>
-      </article>
-      <article class="ig-card ig-tile">
-        <div class="ig-tile__art"><div class="float float--blue" style="position:static;animation:none;rotate:-4deg"><svg><use href="#i-grid"/></svg></div></div>
-        <div class="ig-tile__body"><h3 class="ig-h3">按分類逛</h3><p class="ig-small">還沒想好要什麼，就點上面的分類膠囊看看。</p></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- 對比 -->
-  <section class="split" style="margin-bottom:96px">
-    <div>
-      <span class="ig-eyebrow">Before / After</span>
-      <h2 class="ig-h2" style="margin:10px 0 12px">少走冤枉路</h2>
-      <p class="ig-body">左邊是以前的做法，右邊是現在的做法。紅叉灰字、綠勾黑字，一眼就知道差在哪。</p>
-    </div>
-    <div class="ig-grid ig-grid--2" style="grid-template-columns:1fr 1fr">
-      <div class="ig-card ig-compare" style="padding:18px"><span class="no"><svg><use href="#i-x"/></svg>開十個分頁找工具</span><span class="yes"><svg><use href="#i-check"/></svg>一個頁面全找到</span></div>
-      <div class="ig-card ig-compare" style="padding:18px"><span class="no"><svg><use href="#i-x"/></svg>每次重問一次同事</span><span class="yes"><svg><use href="#i-check"/></svg>分類寫好直接看</span></div>
-    </div>
-  </section>
-
-  <!-- 深色舞台 1：CTA -->
-  <section class="ig-stage" id="join" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center">
-    <div>
-      <span class="ig-badge ig-badge--gold">每週一封</span>
-      <h2 class="ig-h2" style="margin:14px 0 10px">新工具上架，第一時間通知你</h2>
-      <p class="ig-small">只寄真的有用的。隨時可以取消。</p>
-    </div>
-    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='已收到（示意）'" style="display:grid;gap:10px">
-      <input class="ig-input" type="email" placeholder="你的 Email" aria-label="Email">
-      <button class="ig-btn ig-btn--gold ig-btn--block" type="submit">訂閱更新</button>
-      <span class="ig-meta">範例表單，不會真的送出。</span>
-    </form>
-  </section>
-
-  <!-- 深色舞台 2：FAQ -->
-  <section class="ig-stage" id="faq" style="margin-top:28px">
-    <div class="ig-center" style="margin-bottom:28px"><h2 class="ig-h2">常見問題</h2><p class="ig-small" style="margin-top:8px">有疑問先看這裡</p></div>
-    <div class="ig-acc" style="max-width:720px;margin:0 auto">
-      <details open><summary>這些工具要錢嗎？</summary><p>每張卡片底下的標籤會寫清楚。這是範例頁，內容都是示意。</p></details>
-      <details><summary>多久更新一次？</summary><p>建議每週固定整理一次，把不再使用的工具移掉，保持清單精簡。</p></details>
-      <details><summary>可以推薦工具嗎？</summary><p>可以。正式版可以在這裡放一個表單連結。</p></details>
-    </div>
-  </section>
+  <p class="demo-note">這是設計示範：12 個工具名稱與說明用來展示排版。點卡片可看示範說明，沒有連接實際工具。</p>
 </main>
-
-<footer class="ig-footer">
-  <div class="ig-container ig-container--wide" style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap">
-    <div style="max-width:280px">
-      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="#2D2B2C"/><path d="M11 8h10v16l-5-3.6L11 24z" fill="url(#gold)"/></svg>
-      <h4 style="margin-top:12px">工具箱（範例）</h4>
-      <p class="ig-small">南瓜墨金美學的示範頁面，示範目錄型網站怎麼套用這套風格。</p>
-    </div>
-    <div style="display:flex;gap:56px">
-      <div><h4>頁面</h4><a href="#tools">工具目錄</a><a href="#how">怎麼用</a><a href="#faq">常見問題</a></div>
-      <div><h4>設計</h4><a href="../index.html">設計總覽</a><a href="demo-slides.html">簡報範例</a></div>
-    </div>
-  </div>
-  <div class="ig-container ig-container--wide ig-meta" style="margin-top:36px;padding-top:18px;border-top:1px solid var(--ig-ink-hairline)">Pumpkin Ink &amp; Gold · Demo</div>
-</footer>
-
+<footer class="directory-footer"><span>南瓜墨金美學 <b>Ink & Gold</b></span><a href="../index.html">設計總覽 ↗</a><a href="https://github.com/terry12260201/pumpkin-ink-gold">GitHub ↗</a></footer>
+<dialog id="tool-detail" aria-labelledby="detail-title"><button id="close-detail" aria-label="關閉說明">×</button><span class="ig-eyebrow">工具卡 · 設計示範</span><h2 id="detail-title"></h2><p id="detail-copy"></p><p class="ig-small">這張卡示範「一眼認出用途，再看更多」。正式使用時，將入口接到你的工具或說明頁。</p><button class="ig-btn ig-btn--ink" id="back-directory">回到目錄</button></dialog>
 <script>
 (() => {
   const tools = [
@@ -608,10 +535,10 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   const count = document.getElementById('count'), empty = document.getElementById('empty');
   let cat = '全部';
   const cats = ['全部', ...new Set(tools.map(t => t[2]))];
-  pills.innerHTML = cats.map(c => `<button class="ig-pill${c === cat ? ' is-active' : ''}" data-c="${c}">${c} <span class="ig-pill__n">${c === '全部' ? tools.length : tools.filter(t => t[2] === c).length}</span></button>`).join('');
+  pills.innerHTML = cats.map(c => `<button class="ig-pill${c === cat ? ' is-active' : ''}" aria-pressed="${c === cat}" data-c="${c}">${c} <span class="ig-pill__n">${c === '全部' ? tools.length : tools.filter(t => t[2] === c).length}</span></button>`).join('');
   grid.innerHTML = tools.map(([n, d, c, i]) => `
-    <a class="ig-card ig-card--link ig-tool" href="#" onclick="return false" data-c="${c}" data-k="${n}${d}${c}">
-      <span class="ig-tool__logo"><svg><use href="#i-${i}"/></svg></span>
+    <a class="ig-card ig-card--link ig-tool" href="#tool-detail" data-c="${c}" data-k="${n}${d}${c}">
+      <span class="ig-tool__logo" data-tone="${c}"><svg><use href="#i-${i}"/></svg></span>
       <span class="ig-tool__body">
         <span class="ig-tool__title">${n}</span>
         <span class="ig-tool__desc">${d}</span>
@@ -620,9 +547,9 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
       <svg class="ig-tool__arrow"><use href="#i-arrow"/></svg>
     </a>`).join('');
   const apply = () => {
-    const k = q.value.trim(); let shown = 0;
+    const k = q.value.trim().toLowerCase(); let shown = 0;
     grid.querySelectorAll('.ig-tool').forEach(el => {
-      const ok = (cat === '全部' || el.dataset.c === cat) && (!k || el.dataset.k.includes(k));
+      const ok = (cat === '全部' || el.dataset.c === cat) && (!k || el.dataset.k.toLowerCase().includes(k));
       el.style.display = ok ? '' : 'none'; shown += ok;
     });
     count.textContent = `顯示 ${shown} / ${tools.length} 個工具`;
@@ -630,10 +557,14 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   };
   pills.addEventListener('click', e => {
     const b = e.target.closest('[data-c]'); if (!b) return;
-    cat = b.dataset.c; pills.querySelectorAll('.ig-pill').forEach(p => p.classList.toggle('is-active', p === b)); apply();
+    cat = b.dataset.c; pills.querySelectorAll('.ig-pill').forEach(p => (p.classList.toggle('is-active', p === b), p.setAttribute('aria-pressed', p === b))); apply();
   });
   q.addEventListener('input', apply);
   document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); } });
+  const detail=document.getElementById('tool-detail');
+  grid.addEventListener('click',e=>{const a=e.target.closest('.ig-tool');if(!a)return;e.preventDefault();document.getElementById('detail-title').textContent=a.querySelector('.ig-tool__title').textContent;document.getElementById('detail-copy').textContent=a.querySelector('.ig-tool__desc').textContent;detail.showModal();});
+  document.getElementById('close-detail').onclick=()=>detail.close();
+  document.getElementById('back-directory').onclick=()=>detail.close();
   apply();
 })();
 </script>

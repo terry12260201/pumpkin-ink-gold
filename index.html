@@ -12,7 +12,7 @@
 <style>
 /* ink-gold kit:start */
 /* ==========================================================================
-   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.0
+   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.1
    用法：整段貼進 <style>，<body class="ig"> 就生效。
    中文頁面請寫 <html lang="zh-Hant">（標題字距會自動改成中文友善）。
    ========================================================================== */
@@ -48,7 +48,7 @@
   --ig-gold: #FDC302;
   --ig-gold-light: #FFD83A;
   --ig-gold-soft: #FCD94A;   /* 焦點光圈、深底上的 hover 字 */
-  --ig-gold-deep: #B88800;   /* 淺底上的金色文字 */
+  --ig-gold-deep: #8A6400;   /* 淺底上的金色文字 */
   --ig-gold-wash: #FEF3C7;
   --ig-on-gold: #2D2B2C;     /* 金色上面的字：深炭，不是純黑 */
   --ig-gold-gradient: linear-gradient(to top, #FDC302 0%, #FFD83A 100%);
@@ -378,6 +378,36 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   .ig-nav { margin: 12px 12px 0; }
   .ig-tool__logo { width: 56px; height: 56px; flex-basis: 56px; }
 }
+
+/* 1.1 · Directory profile — exact content width, quieter hierarchy */
+:root{--ig-w-directory:1200px;--ig-grid-gap:12px;--ig-logo-size:76px;--ig-label-readable:rgba(22,20,21,.64);--ig-focus-ink:rgba(22,20,21,.8);--ig-dot-quiet:rgba(22,20,21,.055)}
+html:has(body.ig),body.ig{overflow-x:clip}
+body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,transparent 1px)}
+.ig-directory .ig-container{max-width:1248px;padding:0 24px}
+.ig-directory .ig-nav{width:calc(100% - 48px);max-width:var(--ig-w-directory);top:24px;margin:24px auto 0}
+.ig-directory .ig-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ig-grid-gap)}
+.ig-directory .ig-tool__logo{width:var(--ig-logo-size);height:var(--ig-logo-size);flex-basis:var(--ig-logo-size)}
+.ig-directory .ig-tool__logo svg{width:40px;height:40px}
+.ig-directory .ig-tool__title{display:block;padding-right:12px;line-height:1.5}
+.ig-directory .ig-tool__desc{line-height:1.6;min-height:3.2em}
+.ig-directory .ig-tool__foot{margin-top:10px}
+.ig-directory .ig-tool__foot .ig-tag{padding:0;background:transparent;font-size:12px;color:var(--ig-label-readable)}
+.ig-directory .ig-card--link:hover{transform:translateY(-1px)}
+.ig-directory .ig-pill__n{color:var(--ig-label-readable)}
+.ig-directory .ig-pill.is-active .ig-pill__n{color:var(--ig-on-night-muted)}
+.ig-directory .ig-tool__arrow{opacity:0}
+.ig-directory .ig-tool:hover .ig-tool__arrow,.ig-directory .ig-tool:focus-visible .ig-tool__arrow{opacity:1}
+.ig-directory .ig-tool__logo[data-tone="文件"]{color:var(--ig-chart-3)}
+.ig-directory .ig-tool__logo[data-tone="設計"]{color:var(--ig-chart-4)}
+.ig-directory .ig-tool__logo[data-tone="影像"]{color:var(--ig-chart-5)}
+.ig-directory .ig-tool__logo[data-tone="自動化"]{color:var(--ig-chart-2)}
+.ig-directory .ig-tool__logo[data-tone="生活"]{color:var(--ig-gold-deep)}
+.ig-directory :focus-visible{outline:2px solid var(--ig-focus-ink);outline-offset:3px;box-shadow:var(--ig-focus)}
+.ig[data-theme="night"]{--ig-label-readable:rgba(247,247,247,.65);--ig-focus-ink:rgba(255,255,255,.8)}
+@media(max-width:1023px){.ig-directory .ig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ig-directory .ig-grid{grid-template-columns:minmax(0,1fr)}.ig-directory .ig-container{padding:0 16px}.ig-directory .ig-nav{width:calc(100% - 24px);top:12px;margin-top:12px}.ig-directory .ig-tool__logo{width:64px;height:64px;flex-basis:64px}}
+@media(prefers-reduced-motion:reduce){.ig-card--link:hover,.ig-btn:hover,.ig-tool__arrow{transform:none!important}}
+
 /* ink-gold kit:end */
 
 /* ── 總覽板專用 ── */
@@ -458,7 +488,7 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
   <header class="head">
     <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="#2D2B2C"/><path d="M11 8h10v16l-5-3.6L11 24z" fill="url(#gold)"/></svg>
     <h1>南瓜墨金美學 <em>Ink &amp; Gold</em></h1>
-    <span class="ig-meta">DESIGN DNA · v1.0</span>
+    <span class="ig-meta">DESIGN DNA · v1.1</span>
     <nav class="head__links">
       <a class="ig-btn ig-btn--ghost ig-btn--sm" href="assets/demo-directory.html">範例：工具目錄頁</a>
       <a class="ig-btn ig-btn--ghost ig-btn--sm" href="assets/demo-slides.html">範例：簡報</a>
@@ -466,7 +496,8 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
     </nav>
   </header>
 
-  <main class="board">
+  <div class="ig-container" style="padding-top:24px;padding-bottom:8px"><p style="font-size:14px;color:var(--ig-ink-muted)"><b>1.1 校準：</b>目錄先看得清楚：1200px 內容寬、三欄小卡、76px 圖示。大標與深色舞台依用途選用。 <a href="assets/demo-directory.html" style="text-decoration:underline">看新版目錄 →</a></p></div>
+<main class="board">
     <!-- ── Row 1 ── -->
     <section class="cell pal" aria-label="金 Gold">
       <div class="pal__hero" style="background:#FDC302;color:#2D2B2C" data-hex="#FDC302">
@@ -476,7 +507,7 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
     </section>
 
     <section class="cell">
-      <div class="cell__top"><span class="cell__name">標題 Display</span><span class="cell__font">Roboto 900 Italic / 300<br>思源黑體 900 / 300</span></div>
+      <div class="cell__top"><span class="cell__name">標題 Display</span><span class="cell__font">目錄 40/600 · 品牌 62/900<br>中文目錄 36–40/600 · 品牌 900/300</span></div>
       <div class="spec">
         <div class="spec__aa"><b style="font-weight:900;font-style:italic">A</b><span style="font-weight:300">a</span></div>
         <div class="spec__zh"><b style="font-weight:900">墨</b><span style="font-weight:300">金</span></div>
@@ -568,7 +599,7 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
     </section>
 
     <section class="cell">
-      <div class="cell__top"><span class="cell__name">工具卡 Card</span><span class="cell__font">18px · 1px 髮絲線</span></div>
+      <div class="cell__top"><span class="cell__name">工具卡 Card</span><span class="cell__font">18px · 76px 圖示 · 12px 間距</span></div>
       <div class="cell__center">
         <a class="ig-card ig-card--link ig-tool" href="#" onclick="return false" style="margin:0 -6px">
           <span class="ig-tool__logo"><svg><use href="#i-mic"/></svg></span>
@@ -638,7 +669,7 @@ html[lang^="zh"] .ig-display { line-height: 1.22; }
 
   <footer class="foot">
     <span>點任何色塊即可複製色碼 · 字體：Roboto／Roboto Mono／思源黑體（Noto Sans TC）</span>
-    <span class="ig-num">PUMPKIN INK &amp; GOLD · v1.0 · 2026</span>
+    <span class="ig-num">PUMPKIN INK &amp; GOLD · v1.1 · 2026</span>
   </footer>
 </div>
 <div class="toast" id="toast"></div>
