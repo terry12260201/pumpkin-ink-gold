@@ -8,6 +8,16 @@
 
 ![墨金設計總覽：色彩、字體與元件](docs/overview.png)
 
+## 1.2（2026-09-20 合併版）：把手感也補齊
+
+移動滑鼠，小點會向內靠攏；停在按鈕上，附近的點會沿著按鈕輪廓聚過來。滑鼠離開，再排回整齊的網格。這是會回應操作的背景，不是一張不動的點點壁紙。
+
+右上角可切換淺色與深色，下次打開會記住選擇。小螢幕與「減少動態」設定保留安靜的靜態背景。
+
+卡片使用統一比例的雙色圖標，Logo換成南瓜正式品牌檔。品牌Logo認公司、主題圖標認用途、操作圖示認動作，各有自己的位置。
+
+![深色工具目錄](docs/directory-dark.jpg)
+
 ## 先看它的個性
 
 | 元素 | 看起來如何 | 為什麼這樣做 |
@@ -18,7 +28,7 @@
 | 卡 | 白色、細邊、18px圓角 | 每件東西有自己的位置 |
 | 圖 | 小而清楚的Logo或主題圖示 | 還沒讀字，就先認出用途 |
 | 字 | 中文端正、字距自然、行高舒服 | 看久一點也不擠 |
-| 動 | 滑過時輕輕變化 | 告訴你可以點，不打斷閱讀 |
+| 動 | 小點向游標與按鈕輪廓收攏 | 輕輕回應你，不打斷閱讀 |
 
 ## 色票，像文具盒一樣簡單
 
@@ -34,7 +44,7 @@
 
 ## 目錄模式：最接近本次參考頁的版本
 
-![中文工具目錄：置中導讀與三欄小卡](docs/directory-v1.1.png)
+![中文工具目錄：置中導讀與三欄小卡](docs/directory-light.jpg)
 
 桌面像一面整齊的索引牆，手機變成一列卡片。每張卡都照同一個順序：**識別圖 → 名稱 → 用途 → 分類**。
 
@@ -84,18 +94,20 @@
 <html lang="zh-Hant">
 <link rel="stylesheet" href="references/ink-gold.css">
 <body class="ig ig-directory">
+  <button class="ig-theme-toggle" data-ig-theme-toggle aria-label="切換深色模式"></button>
   <!-- 你的導覽、導讀、分類與卡片 -->
+  <script src="references/ink-gold-ui.js"></script>
 </body>
 </html>
 ```
 
-目錄用 `ig ig-directory`；品牌模式用 `ig`。要單檔離線開啟，把CSS內嵌，圖片一起帶走，字體使用本機備援。
+目錄用 `ig ig-directory`；品牌模式用 `ig`。整包攜帶HTML、CSS、JS與圖示可保留完整外觀；若要單檔，需再內嵌CSS、JS與SVG，字體使用本機備援。file://尚未完成實機驗證。
 
 ## 給 Claude、Codex 或其他 AI
 
-把 [SKILL.md](SKILL.md)、[design.md](design.md) 和 CSS 一起提供，說：
+把 [SKILL.md](SKILL.md)、[design.md](design.md) 和 CSS／JS 一起提供，說：
 
-> 用「南瓜墨金美學 1.1」的目錄模式幫我做＿＿。保留三欄橫卡、76px識別圖與中文閱讀層級，內容使用我提供的資料。
+> 用「南瓜墨金美學 1.2」的目錄模式幫我做＿＿。保留三欄橫卡、76px識別圖、互動內縮點陣、深淺切換與中文閱讀層級，內容使用我提供的資料。
 
 完整版本在 [AI咒語](references/AI咒語.md)。Claude可安裝到 `~/.claude/skills/pumpkin-ink-gold`；Codex可安裝到 `~/.codex/skills/pumpkin-ink-gold`。修改套件後執行 `python3 scripts/inline_kit.py` 更新內嵌範例。
 
@@ -108,12 +120,13 @@
 | [色彩與字體](references/色彩與字體.md) | 色碼與文字規格 |
 | [元件與版面](references/元件與版面.md) | 按鈕、卡片、搜尋與各種組合 |
 | [應用食譜](references/應用食譜.md) | 延伸到不同媒介 |
+| [互動腳本](references/ink-gold-ui.js) | 磁吸點陣、深淺切換與動態降級 |
 | [驗證紀錄](docs/verification.md) | 本次實際檢查的範圍與限制 |
 
 ## 來源與界線
 
-本版以使用者指定的 [公開工具目錄](https://godofprompt.ai/best-ai-tools) 為視覺參考，2026-09-17實際量測；觀察值和中文版調整分別記在 [design.md](design.md)。風格名、中文內容與主題圖示採南瓜版本，不含對方商標或原站程式碼。第三方Logo與字體各依原授權使用。
+本版以使用者指定的 [公開工具目錄](https://godofprompt.ai/best-ai-tools) 為視覺參考，2026-09-17實際量測；觀察值和中文版調整分別記在 [design.md](design.md)。風格名與中文內容採南瓜版本，不含對方商標或原站程式碼。2026-09-18補查實際點陣互動並獨立實作。主題圖使用 [Phosphor Icons](https://github.com/phosphor-icons/core) 的MIT授權Duotone素材，配色與底座為本套件調整，詳見 [圖示來源與授權](assets/icons/SOURCES.md)。南瓜Logo來源見 [品牌紀錄](assets/brand/SOURCES.md)。
 
 工具目錄中的12項為設計示範，點擊會開啟說明；不是12項已完成的工具服務。簡報是HTML示範，不是PPTX檔。
 
-南瓜墨金美學 1.1 · 南瓜虛擬科技 · 規範定稿 2026-09-18
+南瓜墨金美學 1.2 · 南瓜虛擬科技 · 規範定稿 2026-09-18

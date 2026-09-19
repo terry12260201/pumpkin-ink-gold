@@ -11,7 +11,7 @@
 <style>
 /* ink-gold kit:start */
 /* ==========================================================================
-   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.1
+   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.2
    用法：整段貼進 <style>，<body class="ig"> 就生效。
    中文頁面請寫 <html lang="zh-Hant">（標題字距會自動改成中文友善）。
    ========================================================================== */
@@ -406,6 +406,30 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
 @media(max-width:1023px){.ig-directory .ig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.ig-directory .ig-grid{grid-template-columns:minmax(0,1fr)}.ig-directory .ig-container{padding:0 16px}.ig-directory .ig-nav{width:calc(100% - 24px);top:12px;margin-top:12px}.ig-directory .ig-tool__logo{width:64px;height:64px;flex-basis:64px}}
 @media(prefers-reduced-motion:reduce){.ig-card--link:hover,.ig-btn:hover,.ig-tool__arrow{transform:none!important}}
+
+
+/* 1.2 · interactive dots, optical icon system, complete day / night surfaces */
+body.ig.ig-has-dotfield{position:relative;isolation:isolate;background-image:none}
+.ig-dotfield{position:fixed;inset:0;pointer-events:none;z-index:-1;display:block}
+.ig{--ig-label-readable:rgba(22,20,21,.64);color-scheme:light}
+.ig[data-theme="night"]{--ig-label-readable:rgba(247,247,247,.68);--ig-focus-ink:#FCD94A;--ig-gold-wash:#483D20;color-scheme:dark}
+.ig[data-theme="night"] .ig-pill.is-active,.ig[data-theme="night"] .ig-badge{background:#F7F7F7;border-color:#F7F7F7;color:#242223}
+.ig[data-theme="night"] .ig-pill.is-active .ig-pill__n{color:#5D595B}
+.ig[data-theme="night"] .ig-btn--ink{background:#F7F7F7;color:#242223}
+.ig-theme-toggle{display:inline-grid;place-items:center;flex:none;width:36px;height:36px;padding:0;border:1px solid var(--ig-ink-hairline);border-radius:999px;background:var(--ig-card);color:var(--ig-ink);cursor:pointer}
+.ig-theme-toggle svg{width:18px;height:18px}
+.ig-theme-toggle:hover{border-color:var(--ig-ink-faint)}
+.ig-nav .ig-theme-toggle{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:#fff}
+.ig-brand-logo{display:block;width:112px;height:auto;flex:none}
+.ig-nav .ig-brand-logo,.mini-nav .ig-brand-logo,.ig[data-theme="night"] .head>.ig-brand-logo{filter:invert(1)}
+.ig-tool__logo:has(img){overflow:hidden;border:0;box-shadow:none;background:transparent}
+.ig-tool__logo img{display:block;width:100%;height:100%;object-fit:contain}
+.ig-directory .ig-tool__logo:has(img){border-radius:16px}
+.ig[data-theme="night"] .ig-tool__logo img{filter:brightness(.9)}
+.ig[data-theme="night"] .accents button{color:#161415}
+.ig[data-theme="night"] .ig-highlight{color:#161415}
+.ig[data-theme="night"] .cell__font,.ig[data-theme="night"] .spec__note{color:var(--ig-label-readable)}
+@media(max-width:640px){.ig-nav .ig-brand-logo{width:92px}.ig-nav__right{gap:6px}.ig-nav__right>.ig-btn{padding:0 10px;font-size:12px}.ig-nav{padding-left:14px}.head .ig-brand-logo{width:100px}.head__links{margin-left:0}}
 
 /* ink-gold kit:end */
 

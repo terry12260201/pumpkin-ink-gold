@@ -12,7 +12,7 @@
 <style>
 /* ink-gold kit:start */
 /* ==========================================================================
-   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.1
+   🖋️ 南瓜墨金美學 Pumpkin Ink & Gold — CSS Kit v1.2
    用法：整段貼進 <style>，<body class="ig"> 就生效。
    中文頁面請寫 <html lang="zh-Hant">（標題字距會自動改成中文友善）。
    ========================================================================== */
@@ -408,6 +408,30 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
 @media(max-width:640px){.ig-directory .ig-grid{grid-template-columns:minmax(0,1fr)}.ig-directory .ig-container{padding:0 16px}.ig-directory .ig-nav{width:calc(100% - 24px);top:12px;margin-top:12px}.ig-directory .ig-tool__logo{width:64px;height:64px;flex-basis:64px}}
 @media(prefers-reduced-motion:reduce){.ig-card--link:hover,.ig-btn:hover,.ig-tool__arrow{transform:none!important}}
 
+
+/* 1.2 · interactive dots, optical icon system, complete day / night surfaces */
+body.ig.ig-has-dotfield{position:relative;isolation:isolate;background-image:none}
+.ig-dotfield{position:fixed;inset:0;pointer-events:none;z-index:-1;display:block}
+.ig{--ig-label-readable:rgba(22,20,21,.64);color-scheme:light}
+.ig[data-theme="night"]{--ig-label-readable:rgba(247,247,247,.68);--ig-focus-ink:#FCD94A;--ig-gold-wash:#483D20;color-scheme:dark}
+.ig[data-theme="night"] .ig-pill.is-active,.ig[data-theme="night"] .ig-badge{background:#F7F7F7;border-color:#F7F7F7;color:#242223}
+.ig[data-theme="night"] .ig-pill.is-active .ig-pill__n{color:#5D595B}
+.ig[data-theme="night"] .ig-btn--ink{background:#F7F7F7;color:#242223}
+.ig-theme-toggle{display:inline-grid;place-items:center;flex:none;width:36px;height:36px;padding:0;border:1px solid var(--ig-ink-hairline);border-radius:999px;background:var(--ig-card);color:var(--ig-ink);cursor:pointer}
+.ig-theme-toggle svg{width:18px;height:18px}
+.ig-theme-toggle:hover{border-color:var(--ig-ink-faint)}
+.ig-nav .ig-theme-toggle{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:#fff}
+.ig-brand-logo{display:block;width:112px;height:auto;flex:none}
+.ig-nav .ig-brand-logo,.mini-nav .ig-brand-logo,.ig[data-theme="night"] .head>.ig-brand-logo{filter:invert(1)}
+.ig-tool__logo:has(img){overflow:hidden;border:0;box-shadow:none;background:transparent}
+.ig-tool__logo img{display:block;width:100%;height:100%;object-fit:contain}
+.ig-directory .ig-tool__logo:has(img){border-radius:16px}
+.ig[data-theme="night"] .ig-tool__logo img{filter:brightness(.9)}
+.ig[data-theme="night"] .accents button{color:#161415}
+.ig[data-theme="night"] .ig-highlight{color:#161415}
+.ig[data-theme="night"] .cell__font,.ig[data-theme="night"] .spec__note{color:var(--ig-label-readable)}
+@media(max-width:640px){.ig-nav .ig-brand-logo{width:92px}.ig-nav__right{gap:6px}.ig-nav__right>.ig-btn{padding:0 10px;font-size:12px}.ig-nav{padding-left:14px}.head .ig-brand-logo{width:100px}.head__links{margin-left:0}}
+
 /* ink-gold kit:end */
 
 /* ── 總覽板專用 ── */
@@ -486,17 +510,17 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
 
 <div class="wrap">
   <header class="head">
-    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="#2D2B2C"/><path d="M11 8h10v16l-5-3.6L11 24z" fill="url(#gold)"/></svg>
+    <img class="ig-brand-logo" src="assets/brand/pumpkin-logo-black.svg" alt="南瓜虛擬科技">
     <h1>南瓜墨金美學 <em>Ink &amp; Gold</em></h1>
-    <span class="ig-meta">DESIGN DNA · v1.1</span>
-    <nav class="head__links">
+    <span class="ig-meta">DESIGN DNA · v1.2</span>
+    <nav class="head__links"><button class="ig-theme-toggle" type="button" data-ig-theme-toggle aria-label="切換深色模式" aria-pressed="false"></button>
       <a class="ig-btn ig-btn--ghost ig-btn--sm" href="assets/demo-directory.html">範例：工具目錄頁</a>
       <a class="ig-btn ig-btn--ghost ig-btn--sm" href="assets/demo-slides.html">範例：簡報</a>
       <a class="ig-btn ig-btn--gold ig-btn--sm" href="references/ink-gold.css" download>下載 CSS 套件</a>
     </nav>
   </header>
 
-  <div class="ig-container" style="padding-top:24px;padding-bottom:8px"><p style="font-size:14px;color:var(--ig-ink-muted)"><b>1.1 校準：</b>目錄先看得清楚：1200px 內容寬、三欄小卡、76px 圖示。大標與深色舞台依用途選用。 <a href="assets/demo-directory.html" style="text-decoration:underline">看新版目錄 →</a></p></div>
+  <div class="ig-container" style="padding-top:24px;padding-bottom:8px"><p style="font-size:14px;color:var(--ig-ink-muted)"><b>1.2 細節更新：</b>移動游標，靠近的點會變亮、變大；右上角可切換深淺色。卡片換成雙色圖標，品牌使用南瓜正式 Logo。 <a href="assets/demo-directory.html" style="text-decoration:underline">看新版目錄 →</a></p></div>
 <main class="board">
     <!-- ── Row 1 ── -->
     <section class="cell pal" aria-label="金 Gold">
@@ -567,7 +591,7 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
       <div class="cell__top"><span class="cell__name">導覽 Navigation</span><span class="cell__font">深炭浮動膠囊</span></div>
       <div class="cell__center">
         <div class="mini-nav">
-          <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" style="margin-right:auto"><path d="M11 8h10v16l-5-3.6L11 24z" fill="url(#gold)"/></svg>
+          <img class="ig-brand-logo" src="assets/brand/pumpkin-logo-black.svg" alt="南瓜虛擬科技" style="width:86px;margin-right:auto">
           <span class="ig-icon-btn on"><svg><use href="#i-home"/></svg></span>
           <span class="ig-icon-btn"><svg><use href="#i-search"/></svg></span>
           <span class="ig-icon-btn"><svg><use href="#i-user"/></svg></span>
@@ -602,7 +626,7 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
       <div class="cell__top"><span class="cell__name">工具卡 Card</span><span class="cell__font">18px · 76px 圖示 · 12px 間距</span></div>
       <div class="cell__center">
         <a class="ig-card ig-card--link ig-tool" href="#" onclick="return false" style="margin:0 -6px">
-          <span class="ig-tool__logo"><svg><use href="#i-mic"/></svg></span>
+          <span class="ig-tool__logo"><img src="assets/icons/mic.svg" alt=""></span>
           <span class="ig-tool__body">
             <span class="ig-tool__title">會議紀錄整理</span>
             <span class="ig-tool__desc">丟進逐字稿，自動整理成決議、待辦和負責人。</span>
@@ -669,7 +693,7 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
 
   <footer class="foot">
     <span>點任何色塊即可複製色碼 · 字體：Roboto／Roboto Mono／思源黑體（Noto Sans TC）</span>
-    <span class="ig-num">PUMPKIN INK &amp; GOLD · v1.1 · 2026</span>
+    <span class="ig-num">PUMPKIN INK &amp; GOLD · v1.2 · 2026</span>
   </footer>
 </div>
 <div class="toast" id="toast"></div>
@@ -695,5 +719,6 @@ body.ig.ig-directory{background-image:radial-gradient(var(--ig-dot-quiet) .7px,t
   document.addEventListener('click', (e) => { const el = e.target.closest('[data-hex]'); if (el) copy(el.dataset.hex); });
 })();
 </script>
+<script src="references/ink-gold-ui.js"></script>
 </body>
 </html>
