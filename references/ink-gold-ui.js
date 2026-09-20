@@ -90,7 +90,7 @@
   }
   function draw(){
     ctx.clearRect(0,0,width,height);
-    const startX=-((scrollX%spacing+spacing)%spacing),startY=-((scrollY%spacing+spacing)%spacing);
+    const startX=mode==='glow'?spacing/2:-((scrollX%spacing+spacing)%spacing),startY=mode==='glow'?spacing/2:-((scrollY%spacing+spacing)%spacing);
     const motion=enabled();
     for(let y=startY;y<height+spacing;y+=spacing){
       for(let x=startX;x<width+spacing;x+=spacing){
