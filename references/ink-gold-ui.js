@@ -27,6 +27,7 @@
   if (!externalTheme) {
     let theme = 'day';
     try { if (localStorage.getItem('igTheme') === 'night') theme = 'night'; } catch (_) {}
+    try { const q=new URLSearchParams(location.search).get('theme'); if (q==='night'||q==='day') theme=q; } catch (_) {}
     body.dataset.theme = theme;
     toggles.forEach(b => b.addEventListener('click', () => {
       body.dataset.theme = body.dataset.theme === 'night' ? 'day' : 'night';

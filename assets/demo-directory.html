@@ -561,7 +561,7 @@ body.ig.ig-has-dotfield{position:relative;isolation:isolate;background-image:non
   pills.innerHTML = cats.map(c => `<button class="ig-pill${c === cat ? ' is-active' : ''}" aria-pressed="${c === cat}" data-c="${c}">${c} <span class="ig-pill__n">${c === '全部' ? tools.length : tools.filter(t => t[2] === c).length}</span></button>`).join('');
   grid.innerHTML = tools.map(([n, d, c, i]) => `
     <a class="ig-card ig-card--link ig-tool" href="#tool-detail" data-c="${c}" data-k="${n}${d}${c}">
-      <span class="ig-tool__logo"><img src="icons/${i}.svg" width="76" height="76" alt=""></span>
+      <span class="ig-tool__logo"><img src="icons/app/${i}.png" width="76" height="76" alt=""></span>
       <span class="ig-tool__body">
         <span class="ig-tool__title">${n}</span>
         <span class="ig-tool__desc">${d}</span>
@@ -591,6 +591,6 @@ body.ig.ig-has-dotfield{position:relative;isolation:isolate;background-image:non
   apply();
 })();
 </script>
-<script src="../references/ink-gold-ui.js"></script>
+<script src="../references/ink-gold-ui.js?v=20260920b"></script>
 </body>
 </html>
