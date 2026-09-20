@@ -1,8 +1,8 @@
 /* Pumpkin Ink & Gold 1.2 · 主題切換 ＋ 互動點格
    兩種點格模式，用 <body data-dots="…"> 或 <script data-dots="…"> 指定：
-   - glow（預設，南瓜定案版，來自 Pumpkin Notes）：點不移動，游標靠近的點變亮、變大。
-       點距 24px、半徑 1px、墨色透明度 .10（夜間白 .06）；游標 140px 內線性升到 .45、半徑 1.8px。
-   - magnetic（選用）：點像被小磁鐵吸引，往游標靠、沿按鈕輪廓收攏，離開後回到原位。
+   - magnetic（預設，南瓜 2026-09-20 定案＝Pumpkin Notes 首頁的效果）：16px 細點，像被小磁鐵吸引，
+       往游標靠、沿按鈕輪廓收攏，離開後回到原位。
+   - glow（選用，Pumpkin Notes 報告頁舊版）：點不移動，游標靠近的點變亮、變大。
    兩種都不用金色、都尊重 prefers-reduced-motion。無外部相依。 */
 (() => {
   'use strict';
@@ -10,7 +10,7 @@
   if (!body || body.dataset.igUiReady) return;
   body.dataset.igUiReady = 'true';
   const externalTheme = document.currentScript?.dataset.theme === 'external';
-  const mode = (body.dataset.dots || document.currentScript?.dataset.dots || 'glow') === 'magnetic' ? 'magnetic' : 'glow';
+  const mode = (body.dataset.dots || document.currentScript?.dataset.dots || 'magnetic') === 'glow' ? 'glow' : 'magnetic';
   body.dataset.dotsMode = mode;
   const toggles = [...document.querySelectorAll('[data-ig-theme-toggle]')];
   const moon = '<path d="M20.5 13a8.7 8.7 0 0 1-9.5-9.5A8.7 8.7 0 1 0 20.5 13Z"/>';
