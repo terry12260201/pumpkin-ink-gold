@@ -38,6 +38,7 @@
 - [三步開始用](#-三步開始用)
 - [交給 AI 來做](#-交給-ai-來做)
 - [檔案清單](#-檔案清單)
+- [給接手的 AI](#-給接手的-ai)
 
 ---
 
@@ -415,6 +416,68 @@ python3 scripts/inline_kit.py
 
 ---
 
+## 🤖 給接手的 AI
+
+這段寫給第一次接手這個 repo 的 AI（或人）。讀完這段，你應該知道哪個檔案管什麼、改完怎麼驗、要同步到哪裡。
+
+### 檔案地圖
+
+| 路徑 | 做什麼 | 改它的時機 |
+|---|---|---|
+| `SKILL.md` | 給 AI 的操作規則：選版型、不變的視覺規則、完成條件 | 規則有新定案才改；frontmatter 的 `name`／`description` 別動 |
+| `design.md` | 參考站實測尺寸、設計方向、中文轉換 DNA | 重新量測或改目錄尺寸時 |
+| `references/*.md` | 色彩字體、元件版面、圖示風格、應用食譜、點格與品牌、AI 咒語 | 對應主題有新規格時 |
+| `references/ink-gold.css` | **CSS 套件正本**（所有 HTML 內嵌的那份從這裡來） | 改任何視覺數值 |
+| `references/ink-gold-ui.js` | 磁吸點陣、深淺切換、減少動態降級 | 改互動行為（小心，見下方的坑） |
+| `index.html` | 設計總覽頁＝GitHub Pages 首頁 | 跑 `inline_kit.py` 自動更新，不要手改內嵌 CSS 區段 |
+| `assets/demo-directory.html`、`assets/demo-slides.html` | 目錄與簡報範例 | 同上 |
+| `assets/brand/`、`assets/icons/` | 南瓜 Logo、Phosphor 線條圖示、12 顆 app 圖示，各有 `SOURCES.md` 記來源 | 新增素材時一併補來源 |
+| `docs/` | README 用的截圖、色票小方塊（`docs/swatch/`）、圖示範例、`verification.md` 驗證紀錄 | 重拍截圖、補驗證紀錄 |
+| `docs/readme/` | 本 README 的 Banner 與加框截圖 | 重寫 README 時 |
+| `scripts/inline_kit.py` | 把 CSS 灌進所有 HTML 的 `/* ink-gold kit:start */ … end */` 區段 | 改完 CSS 必跑 |
+| `scripts/test-ui.cjs` | 不需瀏覽器的點陣互動行為測試 | 改完 JS 必跑 |
+| `.nojekyll` | 讓 GitHub Pages 不走 Jekyll，底線開頭的檔案（如 `_12顆總覽.png`）才讀得到 | 不要刪 |
+
+### 觸發詞與鐵則
+
+- **觸發**：使用者說「墨金」「Ink & Gold」「pumpkin-ink-gold」，或要求沿用這套設計系統做網站、工具目錄、知識平台、簡報、文件時。
+- **鐵則 1**：金色一個畫面只放一個重點；金底配深炭字 `#2D2B2C`，不用白字。
+- **鐵則 2**：互動點格的**預設是磁吸版**，南瓜指定「一定要保留、不能改壞」；`data-dots="glow"` 只是選用。
+- **鐵則 3**：目錄尺寸固定——內容 1200px、欄距 12px、卡內距 16px、圖文間距 16px、識別圖 76px。
+- **鐵則 4**：圖示照 `references/圖示風格.md`，8 組底色中墨 ≤ 2 顆、金 ≤ 1 顆。
+- **鐵則 5**：驗收要實際移動滑鼠看點陣、實際切深淺色，不拿主觀分數當通過證據。
+
+### 資料與憑證
+
+這個 repo **沒有任何金鑰、帳號或後端**，純前端靜態檔。品牌 Logo 的原始檔位置記在 `assets/brand/SOURCES.md`。另有一份正本在 Obsidian Vault 的 `_系統/skills/pumpkin-ink-gold/`。
+
+### 怎麼驗證改對了
+
+```bash
+node scripts/test-ui.cjs          # 預期：PASS: positional attraction, contour attraction, … blocked storage.
+python3 scripts/inline_kit.py     # 預期：列出 ✓ index.html 與 assets/ 底下兩個範例
+```
+
+接著用 Playwright 或瀏覽器打開 `index.html` 與 `assets/demo-directory.html`，在 1440、768、414、375、320px 檢查沒有橫向捲動，並實際移動滑鼠、切深淺色。結果補進 `docs/verification.md`。
+
+### 改完要同步哪裡
+
+| 位置 | 說明 |
+|---|---|
+| 本 repo（`terry12260201/pumpkin-ink-gold`） | 正式發布處，推上去後 GitHub Pages 自動更新 |
+| `pumpkin-skills` 總倉庫 | 之後以子模組引用本 repo，更新子模組指標即可 |
+| 本機 `~/.claude/skills/pumpkin-ink-gold`、`~/.codex/skills/pumpkin-ink-gold` | AI 實際讀的那份 |
+| Obsidian Vault `_系統/skills/pumpkin-ink-gold/` | 南瓜的知識庫副本 |
+
+### 已知的坑
+
+- **改 CSS 忘了跑 `inline_kit.py`**：總覽頁和範例頁會跟套件不一致，線上看起來「沒改到」。
+- **GitHub Pages 有快取**：推上去後幾分鐘內可能還是舊版，加 `?v=時間戳` 驗證，不要以為沒部署成功。
+- **自動化瀏覽器常擋 file://**：`docs/verification.md` 記錄過離線雙擊模式沒驗到，聲稱離線可用前要真的雙擊測。
+- **`pumpkin-gh-writer` 的視覺母體就是這套**，改了金色或紙色，記得同步檢查它的 `make_banner.py` 與 `墨金上GitHub.md`。
+
+---
+
 ## 來源與界線
 
 - **視覺參考**：以使用者指定的 [公開工具目錄](https://godofprompt.ai/best-ai-tools) 為參考，2026-09-17 實際量測；觀察值和中文版調整分別記在 [design.md](design.md)。風格名稱與中文內容是南瓜版本，不含對方商標或原站程式碼。2026-09-18 補查實際點陣互動並獨立實作。
@@ -423,3 +486,5 @@ python3 scripts/inline_kit.py
 - **示範內容**：工具目錄中的 12 項是設計示範，點擊會開說明，不代表 12 個已完成的工具。簡報是 HTML 示範，不是 PPTX 檔。
 
 <p align="center"><sub>南瓜墨金美學 · 南瓜虛擬科技 · 1.2 · 最後更新 2026-10-06</sub></p>
+
+<sub>🎃 屬於 [pumpkin-skills 南瓜自建 AI 技能庫](https://github.com/terry12260201/pumpkin-skills) · 由 南瓜虛擬科技 製作 · 最後更新 2026-10-07</sub>
